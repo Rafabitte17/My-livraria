@@ -1,0 +1,23 @@
+--2025-05-13 14:01:48--  https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/core.json
+Resolvendo github.com (github.com)... 20.201.28.151
+Conectando-se a github.com (github.com)|20.201.28.151|:443... conectado.
+A requisição HTTP foi enviada, aguardando resposta... 302 Found
+Localização: https://raw.githubusercontent.com/marrcandre/django-drf-tutorial/main/scripts/core.json [redirecionando]
+--2025-05-13 14:01:48--  https://raw.githubusercontent.com/marrcandre/django-drf-tutorial/main/scripts/core.json
+Resolvendo raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.109.133, 185.199.108.133, ...
+Conectando-se a raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... falha: Tempo esgotado para conexão.
+Conectando-se a raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... falha: Tempo esgotado para conexão.
+Conectando-se a raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... conectado.
+A requisição HTTP foi enviada, aguardando resposta... 200 OK
+Tamanho: 259699 (254K) [text/plain]
+Salvando em: ‘core.json.1’
+
+     0K .......... .......... .......... .......... .......... 19% 2,25M 0s
+    50K .......... .......... .......... .......... .......... 39% 6,45M 0s
+   100K .......... .......... .......... .......... .......... 59% 5,14M 0s
+   150K .......... .......... .......... .......... .......... 78% 8,87M 0s
+   200K .......... .......... .......... .......... .......... 98% 20,9M 0s
+   250K ...                                                   100% 6,73T=0,05s
+
+2025-05-13 14:06:18 (5,31 MB/s) - ‘core.json.1’ salvo [259699/259699]
+

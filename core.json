@@ -38,6 +38,97 @@
   }
 },
 {
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2025-05-13T17:11:46.925Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Machado de Assis",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2025-05-13T17:14:41.265Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "George Orwell",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2025-05-13T17:15:02.817Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "(2)(Romance Clássico)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2025-05-13T17:16:04.690Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Nova Fronteira",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2025-05-19T17:04:57.410Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Machado de Assis",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2025-05-19T17:05:10.279Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "(2)(Romance Clássico)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2025-05-19T17:05:14.952Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Nova Fronteira",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
   "model": "auth.permission",
   "pk": 1,
   "fields": {
@@ -581,11 +672,68 @@
   }
 },
 {
+  "model": "core.categoria",
+  "pk": 2,
+  "fields": {
+    "descricao": "Romance Clássico"
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 1,
+  "fields": {
+    "nome": "Nova Fronteira",
+    "site": "https://www.novafronteira.com.br/?srsltid=AfmBOoq-HlR4QdgokGvd_su2if25TJlzb0nViEDjxJBjoHRCk1KHlMZS"
+  }
+},
+{
   "model": "core.autor",
   "pk": 1,
   "fields": {
     "nome": "C.S Lewis",
     "email": "lewis@gmail.com"
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 2,
+  "fields": {
+    "nome": "Machado de Assis",
+    "email": "macha@gmail.com"
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 3,
+  "fields": {
+    "nome": "George Orwell",
+    "email": "geoge@gmail.com"
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 1,
+  "fields": {
+    "nome": "dom",
+    "isbn": "",
+    "quantidade": null,
+    "preco": "0.00",
+    "categoria": null,
+    "editora": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 2,
+  "fields": {
+    "nome": "Dom Casmurro",
+    "isbn": "12313",
+    "quantidade": 2,
+    "preco": "234.00",
+    "categoria": null,
+    "editora": null,
+    "autores": []
   }
 }
 ]

@@ -5,7 +5,6 @@ from .autor import Autor
 from .categoria import Categoria
 
 
-
 class Livro(models.Model):
     nome = models.CharField(max_length=255)
     isbn = models.CharField(max_length=32, null=True, blank=True)
@@ -23,5 +22,5 @@ class Livro(models.Model):
         default=None,
     )
 
-    def __str__(self):
-        return f'({self.id}) {self.titulo} ({self.quantidade})'
+def __str__(self):
+    return f'({self.id}) {self.nome} ({self.quantidade})'

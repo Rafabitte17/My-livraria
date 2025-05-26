@@ -23,7 +23,7 @@ class LivroSerializer(ModelSerializer):
 class LivroListSerializer(ModelSerializer):
     class Meta:
         model = Livro
-        fields = ('id', 'titulo', 'preco')
+        fields = ['id', 'nome', 'quantidade', 'preco']
 
 
 class LivroRetrieveSerializer(ModelSerializer):

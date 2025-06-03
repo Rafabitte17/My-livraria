@@ -1,8 +1,10 @@
 from django.db import models
+
 from uploader.models import Image
-from .editora import Editora
+
 from .autor import Autor
 from .categoria import Categoria
+from .editora import Editora
 
 
 class Livro(models.Model):
@@ -21,6 +23,7 @@ class Livro(models.Model):
         blank=True,
         default=None,
     )
+
 
 def __str__(self):
     return f'({self.id}) {self.nome} ({self.quantidade})'

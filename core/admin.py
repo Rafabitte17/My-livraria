@@ -5,8 +5,6 @@ Django admin customization.
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
-
-from core import models
 from gunicorn.config import User
 
 from core.models import Autor, Categoria, Editora, Livro, User
@@ -20,7 +18,7 @@ class UserAdmin(BaseUserAdmin):
     list_display = ['email', 'name']
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        (_('Personal Info'), {'fields': ('name', 'passage_id')}),
+        (_('Personal Info'), {'fields': ('name', 'passage_id', 'foto',)}),
         (
             _('Permissions'),
             {
@@ -49,6 +47,7 @@ class UserAdmin(BaseUserAdmin):
                     'is_active',
                     'is_staff',
                     'is_superuser',
+                    'foto',
                 ),
             },
         ),

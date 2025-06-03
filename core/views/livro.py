@@ -1,8 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 
-
 from core.models import Livro
-from core.serializers import LivroSerializer, LivroListSerializer, LivroRetrieveSerializer
+from core.serializers import LivroListSerializer, LivroRetrieveSerializer, LivroSerializer
 
 
 class LivroViewSet(ModelViewSet):

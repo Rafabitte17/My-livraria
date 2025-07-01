@@ -36,9 +36,16 @@ class EditoraAdmin(admin.ModelAdmin):
     list_per_page = 10
 
 
-@admin.register(ItensCompra)
-class ItenCompra(admin.ModelAdmin):
+class ItensCompraInline(admin.TabularInline):
+    model = ItensCompra
+    extra = 1  # Quantidade de itens adicionais
+
+@admin.register(Compra)
+class CompraAdmin(admin.ModelAdmin):
+    list_display = ('usuario', 'status')
+    ordering = ('usuario', 'status')
     list_per_page = 10
+    inlines = [ItensCompraInline]
 
 
 @admin.register(Livro)

@@ -6,7 +6,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 from gunicorn.config import User
-from core.models import Autor, Categoria, Compra, Editora, Livro, User
+from core.models import Autor, Categoria, Compra, Editora, ItensCompra, Livro, User
 
 
 @admin.register(Autor)
@@ -36,10 +36,8 @@ class EditoraAdmin(admin.ModelAdmin):
     list_per_page = 10
 
 
-@admin.register(Compra)
-class CompraAdmin(admin.ModelAdmin):
-    list_display = ('usuario', 'status')
-    ordering = ('usuario', 'status')
+@admin.register(ItensCompra)
+class ItenCompra(admin.ModelAdmin):
     list_per_page = 10
 
 

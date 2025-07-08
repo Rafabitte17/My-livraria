@@ -9,21 +9,20 @@ from drf_spectacular.views import (
 )
 from rest_framework.routers import DefaultRouter
 
-from core.views import (
-    AutorViewSet,
-    CategoriaViewSet,
-    CompraViewSet,
-    EditoraViewSet,
-    LivroViewSet,
-)
+from core.views import AutorViewSet, CategoriaViewSet, CompraViewSet, EditoraViewSet, LivroViewSet, UserViewSet
 from uploader.router import router as uploader_router
 
 router = DefaultRouter()
-router.register(r'categorias', CategoriaViewSet)
-router.register(r'editoras', EditoraViewSet)
-router.register(r'autores', AutorViewSet)
-router.register(r'livros', LivroViewSet)
+
+router.register(r'autores', AutorViewSet, basename='autores')
+router.register(r'categorias', CategoriaViewSet, basename='categorias')
+router.register(r'compras', CompraViewSet, basename='compras')
+router.register(r'editoras', EditoraViewSet, basename='editoras')
+router.register(r'livros', LivroViewSet, basename='livros')
+router.register(r'usuarios', UserViewSet, basename='usuarios')
+
 urlpatterns = [
+    # Admin
     path('admin/', admin.site.urls),
     # OpenAPI 3
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
@@ -37,9 +36,10 @@ urlpatterns = [
         SpectacularRedocView.as_view(url_name='schema'),
         name='redoc',
     ),
-    # uploader
-    path('api/media/', include(uploader_router.urls)),
+    # Uploader
+    path('api/media/', include(uploader_router.urls)),  # nova linha
     # API
     path('api/', include(router.urls)),
 ]
+
 urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)

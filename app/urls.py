@@ -12,6 +12,7 @@ from rest_framework.routers import DefaultRouter
 from core.views import (
     AutorViewSet,
     CategoriaViewSet,
+    CompraViewSet,
     EditoraViewSet,
     LivroViewSet,
 )

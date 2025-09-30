@@ -7,9 +7,6 @@ from core.serializers import CompraCreateUpdateSerializer, CompraListSerializer,
 class CompraViewSet(ModelViewSet):
     # queryset = Compra.objects.order_by('-id')
     # serializer_class = CompraSerializer
-    compra = Compra.objects.first()
-    print(compra.tipo_pagamento)  # mostra o valor interno (ex: 1)
-    print(compra.get_tipo_pagamento_display())  # mostra o valor legível (ex: 'Cartão de Crédito')
 
     def get_serializer_class(self):
         if self.action == 'list':

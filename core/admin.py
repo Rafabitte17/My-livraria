@@ -1,3 +1,7 @@
+"""
+Django admin customization.
+"""
+
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
@@ -23,30 +27,26 @@ class CategoriaAdmin(admin.ModelAdmin):
     list_per_page = 10
 
 
-class ItensCompraInline(admin.TabularInline):  # ← agora em formato de tabela
+# class ItensCompraInline(admin.TabularInline):
+class ItensCompraInline(admin.StackedInline):
     model = ItensCompra
-    extra = 1
-    fields = ('livro', 'quantidade', 'preco')  # mostra só os campos principais
+    extra = 1  # Quantidade de itens adicionais
 
 
 @admin.register(Compra)
 class CompraAdmin(admin.ModelAdmin):
-    @admin.display(description='Total')
+    @admin.display(description="Total")
     def total_formatado(self, obj):
         """Exibe R$ 123,45 em vez de 123.45."""
-        return f'R$ {obj.total:.2f}'
+        return f"R$ {obj.total:.2f}"
 
-    list_display = ('usuario', 'status', 'total_formatado', 'data_criacao', 'data_atualizacao')
-    ordering = ('usuario', 'status')
-    search_fields = ('usuario__email',)
-    list_filter = ('status', 'data_criacao', 'data_atualizacao')
+    list_display = ('usuario', 'status', 'total_formatado', 'data')  # mostra na listagem
+    ordering = ('usuario', 'status')  # ordena por esses campos
+    search_fields = ('usuario__email', 'status')  # campos pesquisáveis
+    list_filter = ('status', 'data')  # filtros laterais
     list_per_page = 10
     inlines = [ItensCompraInline]
-    readonly_fields = (
-        'data_criacao',
-        'data_atualizacao',
-        'total_formatado',
-    )
+    readonly_fields = ('data', 'total_formatado',)  # campos somente leitura
 
 
 @admin.register(Editora)
@@ -60,7 +60,11 @@ class EditoraAdmin(admin.ModelAdmin):
 
 @admin.register(Livro)
 class LivroAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'categoria', 'editora')
+    list_display = (
+        'titulo',
+        'categoria',
+        'editora',
+    )
     search_fields = ('titulo', 'editora__nome', 'categoria__descricao', 'isbn')
     list_filter = ('editora', 'categoria')
     ordering = ('categoria', 'editora', 'titulo')
@@ -69,20 +73,52 @@ class LivroAdmin(admin.ModelAdmin):
 
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
+    """Define the admin pages for users."""
+
     ordering = ['id']
     list_display = ['email', 'name']
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        (_('Personal Info'), {'fields': ('name', 'passage_id', 'foto')}),
-        (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser')}),
+        (
+            _('Personal Info'),
+            {
+                'fields': (
+                    'name',
+                    'passage_id',
+                    'foto',
+                )
+            },
+        ),
+        (
+            _('Permissions'),
+            {
+                'fields': (
+                    'is_active',
+                    'is_staff',
+                    'is_superuser',
+                )
+            },
+        ),
         (_('Important dates'), {'fields': ('last_login',)}),
         (_('Groups'), {'fields': ('groups',)}),
         (_('User Permissions'), {'fields': ('user_permissions',)}),
     )
     readonly_fields = ['last_login']
     add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2', 'name', 'foto', 'is_active', 'is_staff', 'is_superuser'),
-        }),
+        (
+            None,
+            {
+                'classes': ('wide',),
+                'fields': (
+                    'email',
+                    'password1',
+                    'password2',
+                    'name',
+                    'foto',
+                    'is_active',
+                    'is_staff',
+                    'is_superuser',
+                ),
+            },
+        ),
     )

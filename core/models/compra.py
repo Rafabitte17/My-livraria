@@ -5,6 +5,12 @@ from .user import User
 
 
 class Compra(models.Model):
+    class StatusCompra(models.IntegerChoices):
+        CARRINHO = 1, 'Carrinho'
+        FINALIZADO = 2, 'Realizado'
+        PAGO = 3, 'Pago'
+        ENTREGUE = 4, 'Entregue'
+
     class TipoPagamento(models.IntegerChoices):
         CARTAO_CREDITO = 1, 'Cartão de Crédito'
         CARTAO_DEBITO = 2, 'Cartão de Débito'
@@ -14,17 +20,10 @@ class Compra(models.Model):
         DINHEIRO = 6, 'Dinheiro'
         OUTRO = 7, 'Outro'
 
-    class StatusCompra(models.IntegerChoices):
-        CARRINHO = 1, 'Carrinho'
-        FINALIZADO = 2, 'Realizado'
-        PAGO = 3, 'Pago'
-        ENTREGUE = 4, 'Entregue'
-
     usuario = models.ForeignKey(User, on_delete=models.PROTECT, related_name='compras')
     status = models.IntegerField(choices=StatusCompra.choices, default=StatusCompra.CARRINHO)
-    data_criacao = models.DateTimeField(auto_now_add=True)  # campo novo
-    data_atualizacao = models.DateTimeField(auto_now=True)
     tipo_pagamento = models.IntegerField(choices=TipoPagamento.choices, default=TipoPagamento.CARTAO_CREDITO)
+    data = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'({self.id}) {self.usuario} {self.status}'
